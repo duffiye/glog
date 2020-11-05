@@ -17,7 +17,7 @@ package glog_test
 import (
 	"testing"
 
-	glog "xin.haxi.glog"
+	glog "xin.haxi.log/glog"
 )
 
 func Test_Info(t *testing.T) {

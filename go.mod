@@ -1,5 +1,4 @@
-module xin.haxi.glog
-
+module xin.haxi.log/glog
 
 go 1.13
 
