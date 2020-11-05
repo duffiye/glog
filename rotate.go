@@ -17,7 +17,7 @@ package glog
 import (
 	"io"
 
-	"xin.haxi.glog/rotate"
+	"github.com/duffiye/glog/rotate"
 )
 
 func newRotate(config *Config) io.Writer {
