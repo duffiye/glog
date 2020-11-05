@@ -1,6 +1,6 @@
-# xlog
+# glog
 
-xlog wrapped go.uber.org/zap, simplify the difficulty of use.
+从斗鱼https://github.com/douyu/jupiter 拷贝出来
 
 
 ## 动态设置日志级别
