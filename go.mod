@@ -1,4 +1,4 @@
-module github.com/duffiye/glog
+module xin.haxi.glog
 
 go 1.13
 
