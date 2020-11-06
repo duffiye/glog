@@ -12,22 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package rotate_test
+package conf
 
-import (
-	"log"
-
-	"github.com/duffiye/glog/rotate"
+// GetOption ...
+type (
+	GetOption  func(o *GetOptions)
+	GetOptions struct {
+		TagName string
+	}
 )
 
-// To use rotate with the standard library's log package, just pass it into
-// the SetOutput function when your application starts.
-func Example() {
-	log.SetOutput(&rotate.Logger{
-		Filename:   "/var/log/myapp/foo.log",
-		MaxSize:    500, // megabytes
-		MaxBackups: 3,
-		MaxAge:     28,   // days
-		Compress:   true, // disabled by default
-	})
+var defaultGetOptions = GetOptions{
+	TagName: "mapstructure",
+}
+
+// 设置Tag
+func TagName(tag string) GetOption {
+	return func(o *GetOptions) {
+		o.TagName = tag
+	}
 }

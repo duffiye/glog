@@ -22,7 +22,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"xin.haxi.glog/rotate"
+	"github.com/duffiye/glog/rotate"
 )
 
 // Example of how to rotate in response to SIGHUP.

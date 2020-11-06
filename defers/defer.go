@@ -12,22 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package rotate_test
+package defers
 
-import (
-	"log"
-
-	"github.com/duffiye/glog/rotate"
+var (
+	globalDefers = NewStack()
 )
 
-// To use rotate with the standard library's log package, just pass it into
-// the SetOutput function when your application starts.
-func Example() {
-	log.SetOutput(&rotate.Logger{
-		Filename:   "/var/log/myapp/foo.log",
-		MaxSize:    500, // megabytes
-		MaxBackups: 3,
-		MaxAge:     28,   // days
-		Compress:   true, // disabled by default
-	})
+// Register 注册一个defer函数
+func Register(fns ...func() error) {
+	globalDefers.Push(fns...)
+}
+
+// Clean 清除
+func Clean() {
+	globalDefers.Clean()
 }

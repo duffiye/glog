@@ -12,14 +12,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package glog_test
+package xcast
 
 import (
 	"testing"
 
-	glog "github.com/duffiye/glog"
+	"github.com/stretchr/testify/assert"
 )
 
-func Test_Info(t *testing.T) {
-	glog.Info("hello", glog.Any("a", "b"))
+type T struct {
+	A string `json:"a"`
+	B string `json:"b"`
+	C struct {
+		D []string `json:"d"`
+	} `json:"c"`
+}
+
+func Test_Decode(t *testing.T) {
+	var src = map[string]interface{}{
+		"a": "1",
+		"b": 2,
+		"c": map[string]interface{}{
+			"d": []string{"1", "2", "3"},
+		},
+	}
+
+	var p T
+
+	err := Decode(src, &p)
+	assert.Nil(t, err)
 }
