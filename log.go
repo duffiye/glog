@@ -205,7 +205,8 @@ func DebugEncodeLevel(lv zapcore.Level, enc zapcore.PrimitiveArrayEncoder) {
 }
 
 func timeEncoder(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
-	enc.AppendInt64(t.Unix())
+	// enc.AppendInt64(t.Unix())
+	enc.AppendString(t.Local().String()) // 修改日志时间格式
 }
 
 // IsDebugMode ...
